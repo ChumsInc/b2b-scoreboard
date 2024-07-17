@@ -11,8 +11,8 @@
 require_once ("autoload.inc.php");
 require_once ('access.inc.php');
 
-$bodyPath = "apps/b2b-pages";
-$title = "B2B Pages";
+$bodyPath = "apps/b2b-scoreboard";
+$title = "B2B Scoreboard";
 $description = "";
 
 $ui = new WebUI($bodyPath, $title, $description, true, 5);
