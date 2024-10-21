@@ -1,17 +1,16 @@
 import React from 'react';
-import {DataTable} from "chums-components";
 import ReportTableFoot from "./ReportTableFoot";
 import {useAppDispatch, useAppSelector} from "../../../app/configureStore";
-import {selectGroupSort, selectReportGroups, selectSortedGroups} from "../selectors";
+import {selectGroupSort, selectSortedGroups} from "../selectors";
 import ReportTableGroup from "./ReportTableGroup";
 import {B2BGroupSort} from "../../../types";
 import classNames from "classnames";
 import {setGroupSort} from "../actions";
 import {Table} from "react-bootstrap";
 
-const SortableTH = ({sort, field, className, children}:{
-    field: 'name'|'account'|'OrderTotal';
-    sort:B2BGroupSort;
+const SortableTH = ({sort, field, className, children}: {
+    field: 'name' | 'account' | 'OrderTotal';
+    sort: B2BGroupSort;
     className?: string;
     children: React.ReactNode;
 }) => {
@@ -28,7 +27,7 @@ const SortableTH = ({sort, field, className, children}:{
         'text-secondary': field !== sort.field,
         'bi-arrow-down': field === sort.field && sort.asc,
         'bi-arrow-up': field === sort.field && !sort.asc,
-        })
+    })
     return (
         <th style={{cursor: 'pointer'}} className={className} onClick={clickHandler}>
             {children}
@@ -47,7 +46,7 @@ export default function ReportTable() {
         <Table size="sm">
             <thead>
             <tr>
-                <th><span className="bi-eye" /></th>
+                <th><span className="bi-eye"/></th>
                 <SortableTH field="account" sort={groupSort}>Account</SortableTH>
                 <SortableTH field="name" sort={groupSort}>Customer</SortableTH>
                 <th>Ship To</th>
@@ -61,8 +60,8 @@ export default function ReportTable() {
                 <SortableTH field="OrderTotal" sort={groupSort} className="text-end">Total</SortableTH>
             </tr>
             </thead>
-            {groups.map(group => (<ReportTableGroup key={group.key} group={group} />))}
-            <ReportTableFoot />
+            {groups.map(group => (<ReportTableGroup key={group.key} group={group}/>))}
+            <ReportTableFoot/>
         </Table>
     )
 }
