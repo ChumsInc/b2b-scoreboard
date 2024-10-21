@@ -1,15 +1,19 @@
 import React from 'react';
 import {useAppSelector} from "../../../app/configureStore";
 import {selectDataLoading} from "../selectors";
-import {LoadingProgressBar} from "chums-components";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 
 export default function LoadingBar() {
     const loading = useAppSelector(selectDataLoading);
 
+    if (loading === 'idle') {
+        return null;
+    }
+
     return (
         <div className="container my-3">
-            <LoadingProgressBar height={loading === 'idle' ? '0' : '5px'} striped animated />
+            <ProgressBar striped animated now={100}/>
         </div>
     )
 }

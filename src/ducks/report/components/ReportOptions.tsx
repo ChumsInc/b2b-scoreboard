@@ -4,6 +4,10 @@ import {loadReportData} from "../actions";
 import {selectLoadOptions} from "../selectors";
 import MinDate from "./MinDate";
 import MaxDate from "./MaxDate";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 
 const ReportOptions = () => {
     const dispatch = useAppDispatch();
@@ -15,23 +19,19 @@ const ReportOptions = () => {
     }
 
     return (
-        <div className="container">
-            <form className="row g-3" onSubmit={submitHandler}>
-                <div className="col-auto">
+        <Container>
+            <Row as="form" className="g-3" onSubmit={submitHandler}>
+                <Col xs="auto">
                     <MinDate/>
-                </div>
-                <div className="col-auto">
+                </Col>
+                <Col xs="auto">
                     <MaxDate/>
-                </div>
-                <div className="col-auto">
-                    <button type="submit" className="btn btn-sm btn-primary">Load</button>
-                </div>
-                <div className="col"></div>
-                <div className="col-auto"></div>
-                <div className="col-auto"></div>
-                <div className="col-auto"></div>
-            </form>
-        </div>
+                </Col>
+                <Col xs="auto">
+                    <Button type="submit" size="sm" variant="primary">Load</Button>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

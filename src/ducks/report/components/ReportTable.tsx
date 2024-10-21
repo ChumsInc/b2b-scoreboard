@@ -7,6 +7,7 @@ import ReportTableGroup from "./ReportTableGroup";
 import {B2BGroupSort} from "../../../types";
 import classNames from "classnames";
 import {setGroupSort} from "../actions";
+import {Table} from "react-bootstrap";
 
 const SortableTH = ({sort, field, className, children}:{
     field: 'name'|'account'|'OrderTotal';
@@ -43,7 +44,7 @@ export default function ReportTable() {
 
 
     return (
-        <table className="table table-sm">
+        <Table size="sm">
             <thead>
             <tr>
                 <th><span className="bi-eye" /></th>
@@ -62,6 +63,6 @@ export default function ReportTable() {
             </thead>
             {groups.map(group => (<ReportTableGroup key={group.key} group={group} />))}
             <ReportTableFoot />
-        </table>
+        </Table>
     )
 }
